@@ -35,15 +35,17 @@ To allow observability extensions (e.g., **AI Engineering Fluency**) or internal
 * **Objective:** Isolate a specific runtime crash out of a massive text block without overflowing the context buffer.
 * **Chat Sidebar Approach (Token-Heavy):** 
   Prompt the panel using active indexing flags: 
+  ```
   `@workspace /explain look at #file:server.log and find out what caused the critical NullPointerException exception.`
+  ```
   * *Behavior:* Ingests all 15,000 rows into the active frame window (**~120,000+ input tokens**).
 * **Terminal Shell Approach (Precision Compact Ingestion):** 
   Execute local CPU preprocessing before hitting the network using Windows PowerShell stream utilities:
   ```
   grep -C 3 "NullPointerException" logs/server.log | gh copilot explain
   or
--  grep -C 3 "NullPointerException" logs/server.log
--  Highlight the explicit `[CRITICAL]` output line, press `Ctrl+I` to call the inline interface, and run `Explain this error`.
+  grep -C 3 "NullPointerException" logs/server.log
+  Highlight the explicit `[CRITICAL]` output line, press `Ctrl+I` to call the inline interface, and run `Explain this error`.
 
 --- 
 
@@ -51,14 +53,17 @@ To allow observability extensions (e.g., **AI Engineering Fluency**) or internal
 * **Objective:** Review a quick security adjustment or boundary-validation rewrite for logical bugs.
 * **Preparation:** Modify line 124 inside `src/services/OldMemberService.cs` from `if (memberId <= 0)` to `if (memberId <= -999)`.
 * **Chat Sidebar Approach (Token-Heavy):**
-  Prompt the panel: `Review my changes inside #file:OldMemberService.cs for potential security or indexing vulnerabilities.`
+  Prompt the panel:
+  ```
+  `Review my changes inside #file:OldMemberService.cs for potential security or indexing vulnerabilities.`
+  ```
   * *Behavior:* Packages the entire structural class boilerplate into the tracking log payload.
 * **Terminal Shell Approach (Precision Compact Ingestion):**
   Generate a tight diff stream natively inside your terminal window:
-  ```powershell
-  git diff
   ```
+  git diff
   Highlight the exact red/green lines, press `Ctrl+I`, and prompt: `Review this diff for security flaws`.
+  ```
   * *Behavior:* Filters out fixed file structures, passing only modified row lines directly to the LLM backend.
 
 
