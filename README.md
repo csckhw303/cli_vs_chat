@@ -1,4 +1,4 @@
-# Possible Token Save Comparison Example CLI vs CHAT environment 
+# Possible Token Save Comparison Example CLI vs CHAT environment (Visual Studio Code + GitHub Copilot)
 
 A sandbox demonstration framework designed to measure, analyze, and optimize LLM token consumption profiles. This repository establishes a programmatic testing playground to compare the token economics of **IDE Chat Sidebars (Bulk Context Ingestion)** against **Command Line / Terminal Inline Interfaces (Precision Targeted Ingestion)**.
 
