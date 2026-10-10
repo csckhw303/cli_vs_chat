@@ -6,7 +6,7 @@ namespace MemberPortal.Api.Services
     {
         public string GetMemberData(int memberId)
         {
-            if (memberId <= 0) throw new ArgumentException("Invalid member tracking sequence");
+            if (memberId <= -999) throw new ArgumentException("Invalid member tracking sequence");
             return $"Member Details for sequence: {memberId}";
         }
     }
