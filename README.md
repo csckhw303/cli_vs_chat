@@ -42,8 +42,6 @@ To allow observability extensions (e.g., **AI Engineering Fluency**) or internal
 * **Terminal Shell Approach (Precision Compact Ingestion):** 
   Execute local CPU preprocessing before hitting the network using Windows PowerShell stream utilities:
   ```
-  grep -C 3 "NullPointerException" logs/server.log | gh copilot explain
-  or
   grep -C 3 "NullPointerException" logs/server.log
   Highlight the explicit `[CRITICAL]` output line, press `Ctrl+I` to call the inline interface, and run `Explain this error`.
 
@@ -61,15 +59,10 @@ To allow observability extensions (e.g., **AI Engineering Fluency**) or internal
 * **Terminal Shell Approach (Precision Compact Ingestion):**
   Generate a tight diff stream natively inside your terminal window:
   ```
-  git diff | copilot -i "Review these changes for security flaws" 
-  or
   git diff
   Highlight the exact red/green lines, press `Ctrl+I`, and prompt: `Review this diff for security flaws`.
   ```
   * *Behavior:* Filters out fixed file structures, passing only modified row lines directly to the LLM backend.
-
-
-
 ---
 
 ## Token Comparison Metrics Reference Ledger
@@ -77,6 +70,6 @@ To allow observability extensions (e.g., **AI Engineering Fluency**) or internal
 
 | Case | Chat Environment Prompt | Usage | CLI Environment Command / Steps | Usage |
 | :--- | :--- | :--- | :--- | :--- |
-| **Case 1:Log Triage**<br>• Create big log file using the python file provided.<br>• Run the test case experiment. | `@workspace /explain look at #file:server.log and find out what caused the critical NullPointerException exception.` | **6.7 credits** | `grep -C 3 "NullPointerException" logs/server.log \| gh copilot explain`<br><br>**OR**<br><br>• Run: `grep -C 3 "NullPointerException" logs/server.log`<br>• Highlight error lines in terminal.<br>• Prompt via Inline (`Ctrl+I`): *"Explain this specific error output"* | **0.6 credits** |
-| **Case 2:Code Review**<br>• Open sandbox file `src/services/OldMemberService.cs`<br>• Modify line 124 from `if (memberId <= 0)...` to `if (memberId <= -999)...`<br>• Run the test case experiment. | `Review my changes inside #file:OldMemberService.cs for potential security, logic, or edge-case validation vulnerabilities.` | **5.7 credits** | • git diff \|  copilot -i "Review these changes for security flaws" or `git diff`<br>• Highlight terminal lines or use active context frame.<br>• Prompt via Inline (`Ctrl+I`): *"Review this diff for security flaws"* | **0.9 credits** |
+| **Case 1:Log Triage**<br>• Create big log file using the python file provided.<br>• Run the test case experiment. | `@workspace /explain look at #file:server.log and find out what caused the critical NullPointerException exception.` | **6.7 credits** | <br><br>• Run: `grep -C 3 "NullPointerException" logs/server.log`<br>• Highlight error lines in terminal.<br>• Prompt via Inline (`Ctrl+I`): *"Explain this specific error output"* | **0.6 credits** |
+| **Case 2:Code Review**<br>• Open sandbox file `src/services/OldMemberService.cs`<br>• Modify line 124 from `if (memberId <= 0)...` to `if (memberId <= -999)...`<br>• Run the test case experiment. | `Review my changes inside #file:OldMemberService.cs for potential security, logic, or edge-case validation vulnerabilities.` | **5.7 credits** | • git diff`<br>• Highlight terminal lines or use active context frame.<br>• Prompt via Inline (`Ctrl+I`): *"Review this diff for security flaws"* | **0.9 credits** |
 
